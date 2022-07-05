@@ -3,6 +3,7 @@ import { Text, View, Button } from 'react-native';
 import PropTypes from 'prop-types';
 import RandomNumber from '../gameItems/RandomNumber';
 import { styles } from './Styles';
+import { shuffleArray } from '../../utils/utils';
 
 class Game extends React.Component {
   static propTypes = {
@@ -54,7 +55,7 @@ class Game extends React.Component {
     .slice(0, this.props.randomNumberCount - 2)
     .reduce((acc, curr) => acc + curr, 0);
 
-  shuffleRandomNumbers = this.randomNumbers;
+  shuffleRandomNumbers = shuffleArray(this.randomNumbers);
 
   isNumberSelected = (numberIndex) => {
     return this.state.selectedIds.indexOf(numberIndex) >= 0;
