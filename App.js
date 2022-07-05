@@ -1,10 +1,25 @@
 import * as React from 'react';
-import { Text } from 'react-native';
+import Game from './src/components/game/Game';
 
 class App extends React.Component {
+  state = {
+    gameId: 1,
+  };
+
+  resetGame = () => {
+    this.setState((prevState) => {
+      return { gameId: prevState.gameId + 1 };
+    });
+  };
+
   render() {
     return (
-      <Text>Game...</Text>
+      <Game
+        key={this.state.gameId}
+        randomNumberCount={6}
+        initialSeconds={10}
+        onPlayAgain={this.resetGame}
+      />
     );
   }
 }
